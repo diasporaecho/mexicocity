@@ -86,9 +86,22 @@
   footer .sig{font-size:1.7rem}
   footer .meta{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;color:var(--bone-dim);text-transform:uppercase;margin-top:12px}
   @media(max-width:620px){.opt,.hotels{grid-template-columns:1fr}.tl li{grid-template-columns:86px 1fr;gap:10px}}
+
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+.quicknav{position:sticky;top:0;z-index:20;display:flex;gap:8px;overflow:auto;padding:12px 18px;background:#12100ef5;border-bottom:1px solid var(--line)}
+.quicknav a,.action{display:inline-block;padding:10px 14px;border:1px solid var(--line);border-radius:24px;color:var(--bone);text-decoration:none;white-space:nowrap;font-size:.85rem}
+a:focus-visible,button:focus-visible{outline:3px solid var(--marigold);outline-offset:4px}
+.day.current{border-color:var(--marigold);box-shadow:0 0 0 1px var(--marigold)}
+.day-tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.day-tools button{background:transparent;cursor:pointer;font:inherit}
+.day.complete{opacity:.7}.day.complete h3:after{content:' ✓'}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.orb{display:none}}
+@media(max-width:620px){.hero{padding-top:40px!important}.quicknav{padding:10px}.tl li{grid-template-columns:72px 1fr}.b p{font-size:.95rem}}
+@media print{.orbs,.quicknav,.countdown,.day-tools{display:none}body{background:white;color:black}.day{break-inside:avoid;border:1px solid #aaa!important}.wrap{max-width:none}}
 </style>
 </head>
 <body>
+<nav class="quicknav" aria-label="Trip navigation"><a href="#today" id="today-link">Today</a><a href="#day-1">Oct 30</a><a href="#day-2">Oct 31</a><a href="#day-3">Nov 1</a><a href="#day-4">Nov 2</a><a href="#day-5">Nov 3</a><a href="#day-6">Nov 4</a></nav>
 <div class="orbs"><div class="orb a"></div><div class="orb b"></div></div>
 
 <header class="hero">
@@ -97,13 +110,13 @@
   <div class="eyebrow">Field Itinerary · Solo · One-Bag</div>
   <h1>Ciudad de México<br><em>Día de Muertos</em></h1>
   <div class="sub">Oct 30 – Nov 4, 2026 · 6 Days · 5 Nights</div>
-  <div class="live"><span class="d"></span>Trip is live · Day 1</div>
+  <div class="live"><span class="d"></span>Trip itinerary</div>
   <div class="countdown">
     <div><div class="cd-num" id="cd-d">—</div><div class="cd-lab">Days</div></div>
     <div><div class="cd-num" id="cd-h">—</div><div class="cd-lab">Hrs</div></div>
     <div><div class="cd-num" id="cd-m">—</div><div class="cd-lab">Min</div></div>
   </div>
-  <div class="cd-target">→ Day of the Dead Parade · Sat Oct 31 · ~2:00 PM</div>
+  <div class="cd-target">Planned parade time · Sat Oct 31 · ~2:00 PM · Confirm with organizer</div>
 </header>
 
 <div class="wrap">
@@ -119,7 +132,7 @@
 
     <!-- DAY 1 -->
     <article class="day anchor">
-      <div class="day-top"><span class="day-idx">Day 01</span><span class="day-date">Fri · Oct 30 · Today</span></div>
+      <div class="day-top"><span class="day-idx">Day 01</span><span class="day-date">Fri · Oct 30</span></div>
       <h3>Rooftop &amp; <em>Canals</em></h3>
       <span class="badge book">Booked · Xochimilco night tour</span><span class="badge hotel">Emporio</span>
       <ul class="tl">
@@ -235,12 +248,30 @@
   function tick(){
     var diff = target - Date.now();
     var d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m');
-    if(diff<=0){d.textContent='0';h.textContent='00';m.textContent='00';return;}
+    if(diff<=0){document.querySelector('.countdown').hidden=true;return;}
     d.textContent=Math.floor(diff/864e5);
     h.textContent=pad(Math.floor(diff%864e5/36e5));
     m.textContent=pad(Math.floor(diff%36e5/6e4));
   }
   tick();setInterval(tick,1000);
 </script>
-</body>
+<script>
+(function(){
+ const date=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Mexico_City',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+ const dates=['2026-10-30','2026-10-31','2026-11-01','2026-11-02','2026-11-03','2026-11-04'];
+ const days=[...document.querySelectorAll('article.day')];
+ days.forEach((el,i)=>{
+ el.id='day-'+(i+1);
+ if(dates[i]===date){el.classList.add('current');document.getElementById('today-link').href='#'+el.id;document.querySelector('.live').textContent='Trip is live · Day '+(i+1);}
+ const tools=document.createElement('div');tools.className='day-tools';
+ const button=document.createElement('button');button.className='action';button.type='button';
+ const key='cdmx-complete-'+i;
+ let done=false;try{done=localStorage.getItem(key)==='true';}catch(e){}
+ function update(){el.classList.toggle('complete',done);button.textContent=done?'Completed ✓':'Mark day complete';button.setAttribute('aria-pressed',String(done));}
+ update();button.onclick=()=>{done=!done;try{localStorage.setItem(key,String(done));}catch(e){}update();};tools.append(button);el.append(tools);
+ });
+ if(!dates.includes(date))document.getElementById('today-link').href='#day-1';
+ document.querySelectorAll('.ho').forEach(el=>{const a=document.createElement('a');a.className='action';a.textContent='Open directions ↗';a.target='_blank';a.rel='noopener noreferrer';a.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(el.querySelector('h4').textContent+' '+el.querySelector('p').textContent.split('·')[0]+' Mexico City');el.append(a);});
+})();
+</script></body>
 </html>
