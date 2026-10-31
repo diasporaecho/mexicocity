@@ -6,7 +6,7 @@
 <title>CDMX · Día de Muertos — ½ Man ½ Amazing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta name="theme-color" content="#0A0908" />
 <style>
   :root{--void:#0A0908;--void2:#12100E;--brass:#C8A464;--brass-dim:#9A7D46;--bone:#F0E6D2;--bone-dim:#B9AF9C;--marigold:#E9861A;--marigold-glow:#F2A93B;--terra:#B5794A;--teal:#7FA8B8;--panel:rgba(240,230,210,.035);--line:rgba(200,164,100,.28);--hair:rgba(200,164,100,.20);--shadow:0 24px 60px -20px rgba(0,0,0,.75);--maxw:960px;}
   *{box-sizing:border-box}
@@ -87,21 +87,11 @@
   footer .meta{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;color:var(--bone-dim);text-transform:uppercase;margin-top:12px}
   @media(max-width:620px){.opt,.hotels{grid-template-columns:1fr}.tl li{grid-template-columns:86px 1fr;gap:10px}}
 
-html{scroll-behavior:smooth;scroll-padding-top:85px}
-.quicknav{position:sticky;top:0;z-index:20;display:flex;gap:8px;overflow:auto;padding:12px 18px;background:#12100ef5;border-bottom:1px solid var(--line)}
-.quicknav a,.action{display:inline-block;padding:10px 14px;border:1px solid var(--line);border-radius:24px;color:var(--bone);text-decoration:none;white-space:nowrap;font-size:.85rem}
-a:focus-visible,button:focus-visible{outline:3px solid var(--marigold);outline-offset:4px}
-.day.current{border-color:var(--marigold);box-shadow:0 0 0 1px var(--marigold)}
-.day-tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.day-tools button{background:transparent;cursor:pointer;font:inherit}
-.day.complete{opacity:.7}.day.complete h3:after{content:' ✓'}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.orb{display:none}}
-@media(max-width:620px){.hero{padding-top:40px!important}.quicknav{padding:10px}.tl li{grid-template-columns:72px 1fr}.b p{font-size:.95rem}}
-@media print{.orbs,.quicknav,.countdown,.day-tools{display:none}body{background:white;color:black}.day{break-inside:avoid;border:1px solid #aaa!important}.wrap{max-width:none}}
+  a{color:var(--brass);text-underline-offset:4px}button{font:inherit;cursor:pointer}.quick{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0}.quick a,.quick button{padding:9px 13px;border:1px solid var(--line);border-radius:20px;color:var(--bone);background:var(--panel);font-size:.75rem;text-decoration:none}.fine{font-size:.78rem;color:var(--bone-dim)}.maplink{display:inline-block;font-family:'Space Mono',monospace;font-size:.65rem;margin-top:7px}input[type=checkbox]{width:18px;height:18px;accent-color:var(--marigold);flex-shrink:0}.confirm li label{display:flex;gap:12px;align-items:flex-start}.confirm li:has(input:checked){opacity:.55}.references{font-size:.78rem;line-height:1.9}.references a{margin-right:18px}html{scroll-behavior:smooth;scroll-padding-top:20px}:focus-visible{outline:2px solid var(--marigold);outline-offset:4px}@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+  @media print{body{background:#fff;color:#111}.orbs,.countdown,.live,.quick{display:none}.day,.panel,.ho{background:none;box-shadow:none;backdrop-filter:none;border:1px solid #aaa;break-inside:avoid}h1,h2,h3,h4,.sig,.tl .b strong,.shoot p,.flag p{color:#111!important}p,.t,.day-date,.badge,.eyebrow{color:#333!important}.wrap{padding:0}header.hero{padding:10px}.day{padding:16px}.shoot,.flag{background:none}a{color:#222}footer{padding:15px}@page{margin:14mm}}
 </style>
 </head>
 <body>
-<nav class="quicknav" aria-label="Trip navigation"><a href="#today" id="today-link">Today</a><a href="#day-1">Oct 30</a><a href="#day-2">Oct 31</a><a href="#day-3">Nov 1</a><a href="#day-4">Nov 2</a><a href="#day-5">Nov 3</a><a href="#day-6">Nov 4</a></nav>
 <div class="orbs"><div class="orb a"></div><div class="orb b"></div></div>
 
 <header class="hero">
@@ -110,15 +100,16 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--marigold);outline-o
   <div class="eyebrow">Field Itinerary · Solo · One-Bag</div>
   <h1>Ciudad de México<br><em>Día de Muertos</em></h1>
   <div class="sub">Oct 30 – Nov 4, 2026 · 6 Days · 5 Nights</div>
-  <div class="live"><span class="d"></span>Trip itinerary</div>
+  <div class="live"><span class="d"></span>Updated Oct 31 · Mexico City time</div>
   <div class="countdown">
     <div><div class="cd-num" id="cd-d">—</div><div class="cd-lab">Days</div></div>
     <div><div class="cd-num" id="cd-h">—</div><div class="cd-lab">Hrs</div></div>
     <div><div class="cd-num" id="cd-m">—</div><div class="cd-lab">Min</div></div>
   </div>
-  <div class="cd-target">Planned parade time · Sat Oct 31 · ~2:00 PM · Confirm with organizer</div>
+  <div class="cd-target">→ Day of the Dead Parade · Sat Oct 31 · 2:00 PM departure</div>
 </header>
 
+<nav class="quick wrap" aria-label="Trip shortcuts"><a href="#day-today">Parade day</a><a href="#after-parade">After parade</a><a href="#bars">Bars</a><a href="#confirm">Confirmations</a><button type="button" onclick="window.print()">Print itinerary</button></nav>
 <div class="wrap">
   <div class="rule"></div>
 
@@ -132,7 +123,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--marigold);outline-o
 
     <!-- DAY 1 -->
     <article class="day anchor">
-      <div class="day-top"><span class="day-idx">Day 01</span><span class="day-date">Fri · Oct 30</span></div>
+      <div class="day-top"><span class="day-idx">Day 01</span><span class="day-date">Fri · Oct 30 · Past day</span></div>
       <h3>Rooftop &amp; <em>Canals</em></h3>
       <span class="badge book">Booked · Xochimilco night tour</span><span class="badge hotel">Emporio</span>
       <ul class="tl">
@@ -146,18 +137,22 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--marigold);outline-o
     </article>
 
     <!-- DAY 2 -->
-    <article class="day anchor">
+    <article class="day anchor" id="day-today">
       <div class="day-top"><span class="day-idx">Day 02 · Anchor</span><span class="day-date">Sat · Oct 31</span></div>
       <h3>Castle &amp; the <em>Parade</em></h3>
       <span class="badge prop">Chapultepec 9–5, closed Mon</span><span class="badge book">Parade (street-level)</span><span class="badge hotel">Emporio</span>
       <ul class="tl">
-        <li><div class="t">7:45 AM</div><div class="b"><strong>Breakfast → Chapultepec Park</strong><p>Arrive ~8:30; allow the uphill walk + entry queue.</p></div></li>
-        <li><div class="t">9:00 AM</div><div class="b"><strong>Chapultepec Castle</strong><span class="bk">PROPOSED</span><p>Historic rooms, terraces, city views. Leave by 10:30 to protect parade time.</p></div></li>
+        <li><div class="t">Morning</div><div class="b"><strong>Walk to Chapultepec Castle</strong><p>From Emporio Reforma: budget roughly 50–65 minutes. From the Ángel: roughly 35–45 minutes / 2.4 km. Includes the uphill approach; these are planning estimates. The earlier 8:30 arrival was a target, not a transport requirement.</p></div></li>
+        <li><div class="t">9:00 AM</div><div class="b"><strong>Chapultepec Castle</strong><span class="bk">PROPOSED</span><p>Proposed 9:00–10:30 visit, not a confirmed reservation. If starting later, shorten the visit and skip the flower stop as needed to protect parade viewing time.</p></div></li>
+        <li><div class="t">10:30 AM</div><div class="b"><strong>Walk back toward the Ángel</strong><p>Allow about 35–45 minutes, plus any parade barriers. The Ángel is the tall golden winged monument on Reforma.</p></div></li>
         <li><div class="t">11:30 AM</div><div class="b"><strong>Cempasúchil flower festival</strong><p>Between the Ángel and Ahuehuete. Early lunch, water, restroom.</p></div></li>
         <li><div class="t">12:30 PM</div><div class="b"><strong>Claim parade spot</strong><p>Near the Ángel / Ahuehuete. Street-level — no reserved place.</p></div></li>
         <li><div class="t">2:00 PM</div><div class="b"><strong>Day of the Dead Parade</strong><p>Steps off from Diana Cazadora toward the Zócalo; reaches your spot later.</p></div></li>
+        <li><div class="t">After parade</div><div class="b"><strong>Dinner + optional Cityzen rooftop</strong><p>Stay near Reforma. Sofitel, Reforma 297, 38th floor, near the Ángel. Check availability and holiday access; table not reserved.</p></div></li>
+        <li><div class="t">After dark</div><div class="b"><strong>El Camino lights + monumental alebrijes</strong><p>Spend 45–60 minutes exploring the illuminated installations and colorful creatures along Reforma, then head back. Tomorrow's Tolantongo tour starts at 5:45 AM.</p></div></li>
+        <li><div class="t">Alternative</div><div class="b"><strong>Zócalo monumental altar</strong><span class="bk">PUBLISHED END NOV 2</span><p>Choose this instead of the longer Reforma evening. From the Ángel, Centro is a separate journey with crowds and closures; the parade ending there does not mean you can walk straight into the plaza from your viewing spot.</p></div></li>
       </ul>
-      <div class="shoot"><div class="lab">Shoot — the centerpiece</div><p>Castle terraces = clean city wides early. Parade: locked-off wide of floats + Pocket 3 follows + X5 crowd reframes + one piece-to-cam. Verticals in parallel. Drone-free.</p></div>
+      <div class="shoot"><div class="lab">Shoot — the centerpiece</div><p>Castle terraces = clean city wides early. Parade: locked-off wide of floats + Pocket 3 follows + X5 crowd reframes + one piece-to-cam. After dark: Reforma lights and alebrijes; the Zócalo altar is an alternative excursion. Verticals in parallel. Drone-free.</p></div>
     </article>
 
     <!-- DAY 3 -->
@@ -177,22 +172,15 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--marigold);outline-o
     <!-- DAY 4 - PIVOT -->
     <article class="day pivot">
       <div class="day-top"><span class="day-idx">Day 04 · Pivot</span><span class="day-date">Mon · Nov 2</span></div>
-      <h3>The One Open <em>Day</em></h3>
-      <span class="badge pvt">Teotihuacán vs. culture</span><span class="badge hotel">Bristol</span>
-      <p style="margin:14px 0 0;font-size:.89rem;color:var(--bone-dim)">Your only fully-open day. Chapultepec is closed Mondays; the Zócalo monumental altar's published run ends tonight. The walking tour is locked for Nov 3, so this is where Teotihuacán has to go <em>if</em> you do it. Whether you get <strong style="color:var(--bone);font-weight:500">both</strong> depends on your Nov 4 flight — a late departure buys a culture half-day Nov 4 morning.</p>
-      <div class="opt">
-        <div class="o pick">
-          <div class="tag">★ If the film comes first</div>
-          <h4>Teotihuacán</h4>
-          <p>The one irreplaceable cinematic location. Book a <strong>lean early-access, Teotihuacán-only, no-shopping</strong> tour (~$36–48, ~6:20 AM, back early afternoon). Means a 2nd early start right after Tolantongo.</p>
-        </div>
-        <div class="o">
-          <div class="tag">If energy comes first</div>
-          <h4>Culture day</h4>
-          <p>Sleep in after Tolantongo. Biblioteca Vasconcelos (suspended stacks) → Coyoacán / Roma-Condesa → <strong>Zócalo altar before it closes tonight</strong>. DIY, flexible, low-strain.</p>
-        </div>
-      </div>
-      <div class="shoot"><div class="lab">Honest note</div><p>Nov 1 is a 5:45 AM Tolantongo day; a back-to-back pre-dawn Nov 2 is brutal solo. If your Nov 4 flight is afternoon/evening, do Teotihuacán here and a Biblioteca/Coyoacán half-day Nov 4 AM — you get both. If the flight's early, this stays a real either/or.</p></div>
+      <h3>Teotihuacán &amp; <em>History</em></h3>
+      <span class="badge pvt">Chosen · not booked</span><span class="badge hotel">Bristol</span>
+      <ul class="tl">
+        <li><div class="t">Time TBC</div><div class="b"><strong>Teotihuacán, Guadalupe Shrine &amp; Tlatelolco</strong><p>Your selected option: Viator product 5885P140, approximately 9 hours. Confirm Nov 2 availability, selected start time, meeting point and lunch option before paying.</p><p><a href="https://www.viator.com/tours/Mexico-City/Teotihuacan-Pyramids-and-Basilica-of-Guadalupe/d628-5885P140" target="_blank" rel="noopener">View selected tour ↗</a></p></div></li>
+        <li><div class="t">Tour route</div><div class="b"><strong>Pyramids + basilica + Tlatelolco</strong><p>Listing also includes an artisan stop and tasting. Order can vary. Lunch depends on booking option; no balloon flight included. Group-tour hotel pickup is not assumed.</p></div></li>
+        <li><div class="t">Evening</div><div class="b"><strong>Dinner, then optional Zócalo altar</strong><p>Only if return time and energy allow. Published altar run ends Nov 2. Do not count on it being available on your Nov 3 walking tour.</p></div></li>
+      </ul>
+      <div class="flag"><div class="lab">Decision made</div><p>The Coyoacán / Xochimilco option is no longer the plan. Frida Kahlo's original Casa Azul is normally closed Mondays. Biblioteca Vasconcelos moves to Nov 3, around your walking-tour time.</p></div>
+      <div class="shoot"><div class="lab">Pacing</div><p>This follows a full Tolantongo day. Keep the evening flexible and check the actual departure time; do not assume a pre-dawn start for this selected tour.</p></div>
     </article>
 
     <!-- DAY 5 -->
@@ -202,7 +190,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--marigold);outline-o
       <span class="badge book">Booked · Walking tour · time pending</span><span class="badge hotel">Bristol</span>
       <ul class="tl">
         <li><div class="t">TBC</div><div class="b"><strong>Historic-center walking tour</strong><span class="bk">BOOKED</span><p>Zócalo → Templo Mayor surroundings → Metropolitan Cathedral → Plaza Tolsá → Palacio Postal → Bellas Artes. Confirm Templo Mayor / Bellas Artes admissions with operator.</p></div></li>
-        <li><div class="t">After</div><div class="b"><strong>Flexible</strong><p>Hold the afternoon until the tour time is set. Last full evening — favorite corners.</p></div></li>
+        <li><div class="t">After</div><div class="b"><strong>Biblioteca Vasconcelos</strong><p>Proposed after the walking tour, if timing permits. Allow about one hour inside. From Bellas Artes: roughly 35–45 minutes on foot / about 3 km, or 10–20 minutes by car depending on traffic. Published library hours: 8:30 AM–7:30 PM. Confirm any holiday notice.</p></div></li>
       </ul>
       <div class="shoot"><div class="lab">Shoot</div><p>Bellas Artes + Palacio Postal are architectural money. Grab the interiors. Start the nightly offload early — Day 6 is a travel day.</p></div>
     </article>
@@ -213,28 +201,40 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--marigold);outline-o
       <h3>Wrap &amp; <em>Home</em></h3>
       <span class="badge hotel">Bristol checkout</span><span class="badge prop">Flight time pending</span>
       <ul class="tl">
-        <li><div class="t">AM</div><div class="b"><strong>If flight is late → culture half-day</strong><p>Biblioteca Vasconcelos or Coyoacán — whichever you didn't get Nov 2. If flight is early, keep it to backup + departure.</p></div></li>
+        <li><div class="t">AM</div><div class="b"><strong>If flight is late → culture half-day</strong><p>Optional overflow only if flight time permits: the library if missed Nov 3, or a short neighborhood visit. Allow hotel checkout, luggage collection and airport travel; do not commit until flight timing is confirmed.</p></div></li>
         <li><div class="t">Before out</div><div class="b"><strong>Final backup + room sweep</strong><p>Verify every card offloaded ×2 before formatting. Safe, bathroom, drawers, chargers.</p></div></li>
-        <li><div class="t">PM</div><div class="b"><strong>Depart MEX → ATL</strong><p>Kit to carry-on; batteries in cabin.</p></div></li>
+        <li><div class="t">Time TBC</div><div class="b"><strong>Flight home — verify airport and time</strong><p>Kit to carry-on; batteries in cabin.</p></div></li>
       </ul>
       <div class="shoot"><div class="lab">Shoot — outro</div><p>One reflective piece-to-cam to bookend the film + the ½ Man ½ Amazing sign-off plate.</p></div>
     </article>
   </section>
 
+  <section id="after-parade">
+    <div class="sec-head"><h2>After the Parade</h2><span class="eyebrow">Pick your evening</span></div>
+    <div class="panel"><p><strong>Best fit tonight:</strong> dinner near Reforma → optional Cityzen → 45–60 minutes of lights and alebrijes → hotel. Keep tomorrow's 5:45 AM departure in mind.</p>
+    <div class="opt"><div class="o pick"><div class="tag">Walkable from the Ángel corridor</div><h4>Reforma lights + alebrijes</h4><p>El Camino's illuminated Day of the Dead installations are best after dark. Pair with the monumental alebrije displays along Reforma. Use accessible sidewalks and follow closures.</p></div><div class="o"><div class="tag">Alternative cultural evening</div><h4>Zócalo monumental altar</h4><p>The monumental Catrina and lit facades are a separate Centro outing from the Ángel. Expect dense crowds. Published altar dates: Oct 29–Nov 2.</p></div></div>
+    <div class="flag"><div class="lab">Before the parade</div><p>Save the sit-down bar visit for afterward. Have an early lunch, use the restroom, get water and aim for a viewing spot by noon–12:30 PM. Starting time is 2 PM at Diana Cazadora, not arrival time at the Ángel.</p></div></div>
+  </section>
+  <section id="bars"><div class="sec-head"><h2>Bars Worth a Stop</h2><span class="eyebrow">Views · Music · Atmosphere</span></div><div class="panel"><ul class="tl">
+    <li><div class="t">REFORMA</div><div class="b"><strong>Cityzen · Sofitel</strong><p>Best fit after the parade: 38th-floor views of the Ángel. Reforma 297. Check tables and event access first.</p><a href="https://www.sofitel-mexico-city.com/restaurants/cityzen-rooftop/" target="_blank" rel="noopener">Venue ↗</a></div></li>
+    <li><div class="t">ROMA</div><div class="b"><strong>Shhh Roma</strong><p>Best music fit: hi-fi listening bar and jazz programming. Álvaro Obregón 273. Check the lineup; save for another evening if you want to linger.</p><a href="https://www.shhh.mx/cartelera" target="_blank" rel="noopener">Music program ↗</a></div></li>
+    <li><div class="t">JUÁREZ</div><div class="b"><strong>Handshake Speakeasy</strong><p>Creative cocktails and an intimate setting. Amberes 65. Reserve ahead; typical seating is 90 minutes.</p><a href="https://www.opentable.com.mx/r/handshake-speakeasy-juarez" target="_blank" rel="noopener">Reservations ↗</a></div></li>
+    <li><div class="t">ROMA</div><div class="b"><strong>Kinshasa Roma</strong><p>Livelier rooftop for food, drinks and music. Querétaro 225. Check the night's program before going; not a guaranteed hip-hop or Afrobeats night.</p></div></li>
+    </ul><p class="fine">No bar reservations or live availability have been confirmed. Roma is a separate outing from the Reforma parade corridor.</p></div></section>
   <section>
-    <div class="sec-head"><h2>Still to Confirm</h2><span class="eyebrow">Before It Bites</span></div>
+    <div class="sec-head"><h2 id="confirm">Still to Confirm</h2><span class="eyebrow">Before It Bites</span></div>
     <div class="panel">
       <ul class="confirm">
-        <li><span class="box"></span><div><strong>Flight-home date + time (Nov 4)</strong> — decides whether Nov 2 is Teotihuacán-OR-culture, or both.</div></li>
-        <li><span class="box"></span><div><strong>Nov 2 pick</strong> — if Teotihuacán, book an early-access, no-shopping tour now (Día de Muertos week sells out).</div></li>
+        <li><span class="box"></span><div><strong>Nov 4 flight time + airport</strong> — controls any departure-day sightseeing and airport transfer.</div></li>
+        <li><span class="box"></span><div><strong>Nov 2 Teotihuacán booking</strong> — chosen tour 5885P140; confirm availability, start, meeting point and lunch option.</div></li>
         <li><span class="box"></span><div><strong>Emporio luggage hold</strong> — confirm they'll store bags Nov 1 during Tolantongo.</div></li>
         <li><span class="box"></span><div><strong>Tolantongo pickup location + arrival time</strong> (Nov 1 voucher).</div></li>
         <li><span class="box"></span><div><strong>Nov 3 walking-tour start time + meeting point</strong>; Templo Mayor / Bellas Artes admissions.</div></li>
-        <li><span class="box"></span><div><strong>La Terraza table</strong> (today) + Gran Hotel photo access.</div></li>
+        <li><span class="box"></span><div><strong>Friday visits</strong> — mark Gran Hotel / La Terraza completed only if you actually visited; still shown as proposed.</div></li>
       </ul>
     </div>
   </section>
-</div>
+<section class="panel references"><h2>Planning references</h2><p>All times are Mexico City local. Walking estimates are approximate; access and traffic may change. Existing hotel-switch and Nov 4 details are retained from your supplied page.</p><a href="https://mnh.inah.gob.mx/informacion-general">Castle hours</a><a href="https://dgb.cultura.gob.mx/info_dgb.php?id=88">Library hours</a><a href="https://mexicocity.cdmx.gob.mx/e/dia-de-muertos-en-la-ciudad-de-mexico/?lang=en">Festival program</a><p>Checklists save only in this browser. No booking is made by checking a box.</p></section></div>
 
 <footer>
   <div class="sig">Anthony &ldquo;Kwame&rdquo; Durham</div>
@@ -248,30 +248,15 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--marigold);outline-o
   function tick(){
     var diff = target - Date.now();
     var d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m');
-    if(diff<=0){document.querySelector('.countdown').hidden=true;return;}
+    if(diff<=0){d.textContent='0';h.textContent='00';m.textContent='00';document.querySelector('.cd-target').textContent='Scheduled parade departure has passed · check your viewing area for arrival';return;}
     d.textContent=Math.floor(diff/864e5);
     h.textContent=pad(Math.floor(diff%864e5/36e5));
     m.textContent=pad(Math.floor(diff%36e5/6e4));
   }
   tick();setInterval(tick,1000);
+  var maps={"Chapultepec Castle":"Castillo de Chapultepec","Walk back toward the Ángel":"Angel de la Independencia","Claim parade spot":"Angel de la Independencia","Biblioteca Vasconcelos":"Biblioteca Vasconcelos","Cityzen · Sofitel":"Sofitel Mexico City Reforma","Shhh Roma":"Shhh Roma Alvaro Obregon 273","Handshake Speakeasy":"Handshake Speakeasy Amberes 65","Kinshasa Roma":"Kinshasa Roma Queretaro 225","Meet — Hilton Reforma":"Hilton Mexico City Reforma","Zócalo monumental altar":"Zocalo Ciudad de Mexico"};
+  document.querySelectorAll('.tl .b strong').forEach(function(el){var place=maps[el.textContent];if(place){var a=document.createElement('a');a.className='maplink';a.textContent='Open map ↗';a.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place);a.target='_blank';a.rel='noopener';el.parentNode.appendChild(a);}});
+  document.querySelectorAll('.confirm li').forEach(function(li,i){var box=li.querySelector('.box');if(!box)return;var input=document.createElement('input');input.type='checkbox';input.setAttribute('aria-label',li.textContent.trim());var key='cdmx-confirm-v2-'+i;try{input.checked=localStorage.getItem(key)==='yes'}catch(e){} input.addEventListener('change',function(){try{localStorage.setItem(key,input.checked?'yes':'no')}catch(e){}});box.replaceWith(input);});
 </script>
-<script>
-(function(){
- const date=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Mexico_City',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
- const dates=['2026-10-30','2026-10-31','2026-11-01','2026-11-02','2026-11-03','2026-11-04'];
- const days=[...document.querySelectorAll('article.day')];
- days.forEach((el,i)=>{
- el.id='day-'+(i+1);
- if(dates[i]===date){el.classList.add('current');document.getElementById('today-link').href='#'+el.id;document.querySelector('.live').textContent='Trip is live · Day '+(i+1);}
- const tools=document.createElement('div');tools.className='day-tools';
- const button=document.createElement('button');button.className='action';button.type='button';
- const key='cdmx-complete-'+i;
- let done=false;try{done=localStorage.getItem(key)==='true';}catch(e){}
- function update(){el.classList.toggle('complete',done);button.textContent=done?'Completed ✓':'Mark day complete';button.setAttribute('aria-pressed',String(done));}
- update();button.onclick=()=>{done=!done;try{localStorage.setItem(key,String(done));}catch(e){}update();};tools.append(button);el.append(tools);
- });
- if(!dates.includes(date))document.getElementById('today-link').href='#day-1';
- document.querySelectorAll('.ho').forEach(el=>{const a=document.createElement('a');a.className='action';a.textContent='Open directions ↗';a.target='_blank';a.rel='noopener noreferrer';a.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(el.querySelector('h4').textContent+' '+el.querySelector('p').textContent.split('·')[0]+' Mexico City');el.append(a);});
-})();
-</script></body>
+</body>
 </html>
