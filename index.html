@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CDMX · Día de Muertos — ½ Man ½ Amazing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<style>
+  :root{--void:#0A0908;--void2:#12100E;--brass:#C8A464;--brass-dim:#9A7D46;--bone:#F0E6D2;--bone-dim:#B9AF9C;--marigold:#E9861A;--marigold-glow:#F2A93B;--terra:#B5794A;--teal:#7FA8B8;--panel:rgba(240,230,210,.035);--line:rgba(200,164,100,.28);--hair:rgba(200,164,100,.20);--shadow:0 24px 60px -20px rgba(0,0,0,.75);--maxw:960px;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--void);color:var(--bone);font-family:'Inter',system-ui,sans-serif;font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .orbs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+  .orb{position:absolute;border-radius:50%;filter:blur(90px)}
+  .orb.a{width:480px;height:480px;top:-140px;left:-120px;opacity:.45;background:radial-gradient(circle at 30% 30%,var(--marigold),transparent 62%)}
+  .orb.b{width:560px;height:560px;bottom:-200px;right:-160px;opacity:.28;background:radial-gradient(circle at 40% 40%,var(--brass),transparent 60%)}
+  .wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--brass)}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:400;line-height:1.08;margin:0;color:var(--bone)}
+  .sig{font-family:'Great Vibes',cursive;color:var(--brass)}
+  header.hero{text-align:center;padding:60px 22px 26px;position:relative;z-index:2}
+  .brandmark{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:14px}
+  .brandmark .frac{color:var(--marigold);font-weight:700}
+  .brandmark::before,.brandmark::after{content:"";width:28px;height:1px;background:var(--hair)}
+  .hero .sig{font-size:2rem;margin-bottom:6px}
+  .hero h1{font-size:clamp(2.3rem,7vw,3.6rem);font-weight:500;letter-spacing:-.02em;margin:6px 0 10px}
+  .hero h1 em{font-style:italic;color:var(--marigold)}
+  .hero .sub{font-family:'Space Mono',monospace;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-dim)}
+  .live{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-family:'Space Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--marigold);border:1px solid rgba(233,134,26,.4);border-radius:20px;padding:5px 12px}
+  .live .d{width:7px;height:7px;border-radius:50%;background:var(--marigold);box-shadow:0 0 10px var(--marigold);animation:pulse 1.8s infinite}
+  @keyframes pulse{50%{opacity:.3}}
+  .countdown{display:flex;justify-content:center;gap:18px;margin:24px 0 2px;flex-wrap:wrap}
+  .cd-num{font-family:'Fraunces',serif;font-size:clamp(1.8rem,5vw,2.6rem);color:var(--brass);font-weight:500;line-height:1}
+  .cd-lab{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-dim);margin-top:7px}
+  .cd-target{font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.18em;color:var(--marigold);text-transform:uppercase;margin-top:8px}
+  .rule{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:28px 0}
+  .hotels{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+  .ho{padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+  .ho .lab{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:6px}
+  .ho h4{font-family:'Fraunces',serif;font-size:1.1rem;margin:0 0 3px;color:var(--bone);font-weight:500}
+  .ho p{margin:0;font-size:.8rem;color:var(--bone-dim)}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow);padding:24px;margin:0 0 22px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin:8px 0 18px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(1.4rem,4vw,1.9rem)}
+  .sec-head .eyebrow{margin-left:auto}
+  .day{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(14px);box-shadow:var(--shadow);padding:26px;margin-bottom:22px;overflow:hidden}
+  .day::after{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--brass),transparent)}
+  .day.anchor::after{background:linear-gradient(180deg,var(--marigold),var(--brass));width:4px}
+  .day.pivot::after{background:repeating-linear-gradient(180deg,var(--marigold),var(--marigold) 8px,transparent 8px,transparent 16px);width:4px}
+  .day-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline}
+  .day-idx{font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:.2em;color:var(--brass);text-transform:uppercase}
+  .day-date{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.14em;color:var(--bone-dim);text-transform:uppercase}
+  .day h3{font-size:clamp(1.3rem,4vw,1.7rem);margin:8px 0 4px;font-weight:500}
+  .day h3 em{font-style:italic;color:var(--marigold)}
+  .badge{display:inline-block;font-family:'Space Mono',monospace;font-size:.57rem;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:20px;border:1px solid var(--line);color:var(--brass);margin:2px 4px 2px 0}
+  .badge.book{color:var(--marigold);border-color:rgba(233,134,26,.45);background:rgba(233,134,26,.08)}
+  .badge.prop{color:var(--bone-dim);border-color:var(--hair)}
+  .badge.hotel{color:var(--teal);border-color:rgba(127,168,184,.4)}
+  .badge.pvt{color:var(--marigold-glow);border-color:rgba(242,169,59,.4)}
+  .tl{list-style:none;margin:16px 0 0;padding:0}
+  .tl li{display:grid;grid-template-columns:104px 1fr;gap:14px;padding:10px 0;border-top:1px solid var(--hair)}
+  .tl li:first-child{border-top:none}
+  .tl .t{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--brass);letter-spacing:.02em;padding-top:2px}
+  .tl .b strong{font-family:'Fraunces',serif;font-weight:500;color:var(--bone);font-size:1rem}
+  .tl .b .bk{color:var(--marigold);font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.14em;margin-left:6px}
+  .tl .b p{margin:3px 0 0;font-size:.86rem;color:var(--bone-dim)}
+  .shoot{margin-top:16px;padding:14px 16px;border-radius:12px;background:rgba(233,134,26,.06);border:1px solid rgba(233,134,26,.22)}
+  .shoot .lab{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--marigold);margin-bottom:6px}
+  .shoot p{margin:0;font-size:.85rem;color:var(--bone)}
+  .flag{margin-top:14px;padding:13px 16px;border-radius:12px;background:rgba(127,168,184,.07);border:1px solid rgba(127,168,184,.28)}
+  .flag .lab{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+  .flag p{margin:0;font-size:.85rem;color:var(--bone)}
+  .opt{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+  .opt .o{padding:16px;border-radius:12px;border:1px solid var(--hair);background:rgba(240,230,210,.02)}
+  .opt .o.pick{border-color:rgba(233,134,26,.5);background:rgba(233,134,26,.07)}
+  .opt .o .tag{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:8px}
+  .opt .o.pick .tag{color:var(--marigold)}
+  .opt .o h4{font-family:'Fraunces',serif;font-size:1.05rem;margin:0 0 6px;color:var(--bone);font-weight:500}
+  .opt .o p{margin:0;font-size:.82rem;color:var(--bone-dim)}
+  .confirm{list-style:none;margin:0;padding:0}
+  .confirm li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--hair);font-size:.9rem;align-items:flex-start}
+  .confirm li:last-child{border-bottom:none}
+  .confirm .box{width:16px;height:16px;border:1.5px solid var(--brass-dim);border-radius:4px;flex-shrink:0;margin-top:3px}
+  footer{text-align:center;padding:52px 22px 62px;position:relative;z-index:2}
+  footer .sig{font-size:1.7rem}
+  footer .meta{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.2em;color:var(--bone-dim);text-transform:uppercase;margin-top:12px}
+  @media(max-width:620px){.opt,.hotels{grid-template-columns:1fr}.tl li{grid-template-columns:86px 1fr;gap:10px}}
+</style>
+</head>
+<body>
+<div class="orbs"><div class="orb a"></div><div class="orb b"></div></div>
+
+<header class="hero">
+  <div class="brandmark"><span class="frac">½</span> Man <span class="frac">½</span> Amazing</div>
+  <div class="sig">Anthony &ldquo;Kwame&rdquo; Durham</div>
+  <div class="eyebrow">Field Itinerary · Solo · One-Bag</div>
+  <h1>Ciudad de México<br><em>Día de Muertos</em></h1>
+  <div class="sub">Oct 30 – Nov 4, 2026 · 6 Days · 5 Nights</div>
+  <div class="live"><span class="d"></span>Trip is live · Day 1</div>
+  <div class="countdown">
+    <div><div class="cd-num" id="cd-d">—</div><div class="cd-lab">Days</div></div>
+    <div><div class="cd-num" id="cd-h">—</div><div class="cd-lab">Hrs</div></div>
+    <div><div class="cd-num" id="cd-m">—</div><div class="cd-lab">Min</div></div>
+  </div>
+  <div class="cd-target">→ Day of the Dead Parade · Sat Oct 31 · ~2:00 PM</div>
+</header>
+
+<div class="wrap">
+  <div class="rule"></div>
+
+  <div class="hotels">
+    <div class="ho"><div class="lab">Nights 1–2 · Oct 30–Nov 1</div><h4>Emporio Reforma</h4><p>Reforma 124, Col. Juárez · on the parade route</p></div>
+    <div class="ho"><div class="lab">Nights 3–5 · Nov 1–4</div><h4>Hotel Bristol</h4><p>Plaza Necaxa 17, Cuauhtémoc · switch on Nov 1</p></div>
+  </div>
+
+  <section>
+    <div class="sec-head"><h2>Day by Day</h2><span class="eyebrow">Booked vs Proposed</span></div>
+
+    <!-- DAY 1 -->
+    <article class="day anchor">
+      <div class="day-top"><span class="day-idx">Day 01</span><span class="day-date">Fri · Oct 30 · Today</span></div>
+      <h3>Rooftop &amp; <em>Canals</em></h3>
+      <span class="badge book">Booked · Xochimilco night tour</span><span class="badge hotel">Emporio</span>
+      <ul class="tl">
+        <li><div class="t">12:00 PM</div><div class="b"><strong>Gran Hotel Ciudad de México</strong><span class="bk">PROPOSED</span><p>Lobby + stained-glass ceiling. Ask reception about photo access.</p></div></li>
+        <li><div class="t">12:20 PM</div><div class="b"><strong>La Terraza lunch</strong><span class="bk">PROPOSED</span><p>Rooftop over the Zócalo, same building (16 de Septiembre 82). Table not confirmed.</p></div></li>
+        <li><div class="t">1:45 PM</div><div class="b"><strong>Flex / hotel stop</strong><p>Grab a jacket + power bank. Allow return travel time.</p></div></li>
+        <li><div class="t">4:30 PM</div><div class="b"><strong>Meet — Hilton Reforma</strong><p>Avenida Juárez 70. Follow any earlier voucher check-in time.</p></div></li>
+        <li><div class="t">5:00 PM</div><div class="b"><strong>Xochimilco / Doll Island night tour</strong><span class="bk">BOOKED</span><p>Downtown meeting point; follow operator transport. Return time pending.</p></div></li>
+      </ul>
+      <div class="shoot"><div class="lab">Shoot</div><p>Gran Hotel ceiling = signature establisher. Canals at night: trajineras, candles on the water, Doll Island eeriness. Low-light, Pocket 3 + X5. Bring the power bank — long night.</p></div>
+    </article>
+
+    <!-- DAY 2 -->
+    <article class="day anchor">
+      <div class="day-top"><span class="day-idx">Day 02 · Anchor</span><span class="day-date">Sat · Oct 31</span></div>
+      <h3>Castle &amp; the <em>Parade</em></h3>
+      <span class="badge prop">Chapultepec 9–5, closed Mon</span><span class="badge book">Parade (street-level)</span><span class="badge hotel">Emporio</span>
+      <ul class="tl">
+        <li><div class="t">7:45 AM</div><div class="b"><strong>Breakfast → Chapultepec Park</strong><p>Arrive ~8:30; allow the uphill walk + entry queue.</p></div></li>
+        <li><div class="t">9:00 AM</div><div class="b"><strong>Chapultepec Castle</strong><span class="bk">PROPOSED</span><p>Historic rooms, terraces, city views. Leave by 10:30 to protect parade time.</p></div></li>
+        <li><div class="t">11:30 AM</div><div class="b"><strong>Cempasúchil flower festival</strong><p>Between the Ángel and Ahuehuete. Early lunch, water, restroom.</p></div></li>
+        <li><div class="t">12:30 PM</div><div class="b"><strong>Claim parade spot</strong><p>Near the Ángel / Ahuehuete. Street-level — no reserved place.</p></div></li>
+        <li><div class="t">2:00 PM</div><div class="b"><strong>Day of the Dead Parade</strong><p>Steps off from Diana Cazadora toward the Zócalo; reaches your spot later.</p></div></li>
+      </ul>
+      <div class="shoot"><div class="lab">Shoot — the centerpiece</div><p>Castle terraces = clean city wides early. Parade: locked-off wide of floats + Pocket 3 follows + X5 crowd reframes + one piece-to-cam. Verticals in parallel. Drone-free.</p></div>
+    </article>
+
+    <!-- DAY 3 -->
+    <article class="day anchor">
+      <div class="day-top"><span class="day-idx">Day 03</span><span class="day-date">Sun · Nov 1</span></div>
+      <h3>Tolantongo &amp; the <em>Switch</em></h3>
+      <span class="badge book">Booked · Tolantongo · 5:45 AM</span><span class="badge hotel">Emporio → Bristol</span>
+      <ul class="tl">
+        <li><div class="t">Pre-5:45</div><div class="b"><strong>Bag plan before pickup</strong><p>See the switch-day note below — handle checkout/bags before the tour.</p></div></li>
+        <li><div class="t">5:45 AM</div><div class="b"><strong>Full-day Tolantongo tour</strong><span class="bk">BOOKED</span><p>Thermal river, pools, caves in Hidalgo. Follow the operator's schedule. Return time not supplied.</p></div></li>
+        <li><div class="t">Evening</div><div class="b"><strong>Collect bags → check into Bristol</strong><p>Keep dinner flexible. Don't stack another timed booking tonight.</p></div></li>
+      </ul>
+      <div class="flag"><div class="lab">⚠ Switch-day logistics</div><p>The 5:45 AM Tolantongo pickup collides with Emporio checkout. Cleanest fix: check out of Emporio before the tour and <strong>leave your bags with their bell desk</strong> for the day. Collect them on return, taxi to Bristol (both central — short hop), check in that evening. Confirm Emporio will hold luggage.</p></div>
+      <div class="shoot"><div class="lab">Shoot + pack</div><p>Turquoise pools + canyon = a visual break in the edit. Waterproof: GoPro + Insta360 X5. Pack swimwear, water shoes, towel, dry clothes, waterproof pouch, sun, cash, snack. Big physical day.</p></div>
+    </article>
+
+    <!-- DAY 4 - PIVOT -->
+    <article class="day pivot">
+      <div class="day-top"><span class="day-idx">Day 04 · Pivot</span><span class="day-date">Mon · Nov 2</span></div>
+      <h3>The One Open <em>Day</em></h3>
+      <span class="badge pvt">Teotihuacán vs. culture</span><span class="badge hotel">Bristol</span>
+      <p style="margin:14px 0 0;font-size:.89rem;color:var(--bone-dim)">Your only fully-open day. Chapultepec is closed Mondays; the Zócalo monumental altar's published run ends tonight. The walking tour is locked for Nov 3, so this is where Teotihuacán has to go <em>if</em> you do it. Whether you get <strong style="color:var(--bone);font-weight:500">both</strong> depends on your Nov 4 flight — a late departure buys a culture half-day Nov 4 morning.</p>
+      <div class="opt">
+        <div class="o pick">
+          <div class="tag">★ If the film comes first</div>
+          <h4>Teotihuacán</h4>
+          <p>The one irreplaceable cinematic location. Book a <strong>lean early-access, Teotihuacán-only, no-shopping</strong> tour (~$36–48, ~6:20 AM, back early afternoon). Means a 2nd early start right after Tolantongo.</p>
+        </div>
+        <div class="o">
+          <div class="tag">If energy comes first</div>
+          <h4>Culture day</h4>
+          <p>Sleep in after Tolantongo. Biblioteca Vasconcelos (suspended stacks) → Coyoacán / Roma-Condesa → <strong>Zócalo altar before it closes tonight</strong>. DIY, flexible, low-strain.</p>
+        </div>
+      </div>
+      <div class="shoot"><div class="lab">Honest note</div><p>Nov 1 is a 5:45 AM Tolantongo day; a back-to-back pre-dawn Nov 2 is brutal solo. If your Nov 4 flight is afternoon/evening, do Teotihuacán here and a Biblioteca/Coyoacán half-day Nov 4 AM — you get both. If the flight's early, this stays a real either/or.</p></div>
+    </article>
+
+    <!-- DAY 5 -->
+    <article class="day anchor">
+      <div class="day-top"><span class="day-idx">Day 05</span><span class="day-date">Tue · Nov 3</span></div>
+      <h3>Historic Center <em>Walk</em></h3>
+      <span class="badge book">Booked · Walking tour · time pending</span><span class="badge hotel">Bristol</span>
+      <ul class="tl">
+        <li><div class="t">TBC</div><div class="b"><strong>Historic-center walking tour</strong><span class="bk">BOOKED</span><p>Zócalo → Templo Mayor surroundings → Metropolitan Cathedral → Plaza Tolsá → Palacio Postal → Bellas Artes. Confirm Templo Mayor / Bellas Artes admissions with operator.</p></div></li>
+        <li><div class="t">After</div><div class="b"><strong>Flexible</strong><p>Hold the afternoon until the tour time is set. Last full evening — favorite corners.</p></div></li>
+      </ul>
+      <div class="shoot"><div class="lab">Shoot</div><p>Bellas Artes + Palacio Postal are architectural money. Grab the interiors. Start the nightly offload early — Day 6 is a travel day.</p></div>
+    </article>
+
+    <!-- DAY 6 -->
+    <article class="day">
+      <div class="day-top"><span class="day-idx">Day 06</span><span class="day-date">Wed · Nov 4</span></div>
+      <h3>Wrap &amp; <em>Home</em></h3>
+      <span class="badge hotel">Bristol checkout</span><span class="badge prop">Flight time pending</span>
+      <ul class="tl">
+        <li><div class="t">AM</div><div class="b"><strong>If flight is late → culture half-day</strong><p>Biblioteca Vasconcelos or Coyoacán — whichever you didn't get Nov 2. If flight is early, keep it to backup + departure.</p></div></li>
+        <li><div class="t">Before out</div><div class="b"><strong>Final backup + room sweep</strong><p>Verify every card offloaded ×2 before formatting. Safe, bathroom, drawers, chargers.</p></div></li>
+        <li><div class="t">PM</div><div class="b"><strong>Depart MEX → ATL</strong><p>Kit to carry-on; batteries in cabin.</p></div></li>
+      </ul>
+      <div class="shoot"><div class="lab">Shoot — outro</div><p>One reflective piece-to-cam to bookend the film + the ½ Man ½ Amazing sign-off plate.</p></div>
+    </article>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Still to Confirm</h2><span class="eyebrow">Before It Bites</span></div>
+    <div class="panel">
+      <ul class="confirm">
+        <li><span class="box"></span><div><strong>Flight-home date + time (Nov 4)</strong> — decides whether Nov 2 is Teotihuacán-OR-culture, or both.</div></li>
+        <li><span class="box"></span><div><strong>Nov 2 pick</strong> — if Teotihuacán, book an early-access, no-shopping tour now (Día de Muertos week sells out).</div></li>
+        <li><span class="box"></span><div><strong>Emporio luggage hold</strong> — confirm they'll store bags Nov 1 during Tolantongo.</div></li>
+        <li><span class="box"></span><div><strong>Tolantongo pickup location + arrival time</strong> (Nov 1 voucher).</div></li>
+        <li><span class="box"></span><div><strong>Nov 3 walking-tour start time + meeting point</strong>; Templo Mayor / Bellas Artes admissions.</div></li>
+        <li><span class="box"></span><div><strong>La Terraza table</strong> (today) + Gran Hotel photo access.</div></li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="sig">Anthony &ldquo;Kwame&rdquo; Durham</div>
+  <div class="brandmark" style="margin-top:12px"><span class="frac">½</span> Man <span class="frac">½</span> Amazing</div>
+  <div class="meta">CDMX · Día de Muertos · Oct 30 – Nov 4, 2026</div>
+</footer>
+
+<script>
+  var target = new Date('2026-10-31T14:00:00-06:00').getTime();
+  function pad(n){return String(n).padStart(2,'0');}
+  function tick(){
+    var diff = target - Date.now();
+    var d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m');
+    if(diff<=0){d.textContent='0';h.textContent='00';m.textContent='00';return;}
+    d.textContent=Math.floor(diff/864e5);
+    h.textContent=pad(Math.floor(diff%864e5/36e5));
+    m.textContent=pad(Math.floor(diff%36e5/6e4));
+  }
+  tick();setInterval(tick,1000);
+</script>
+</body>
+</html>
